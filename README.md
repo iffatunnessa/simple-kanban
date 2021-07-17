@@ -1,5 +1,7 @@
 # Simple Kanban
 
+https://user-images.githubusercontent.com/45840519/126046390-886a0b19-2765-4771-821c-fced1bdda476.mp4
+
 ## Features:
 1. User can add task one by one.
 2. Drap and drop in different states (to-do, in progress, and done)
@@ -14,6 +16,9 @@
 #How to run this project:
 1. clone this repository in your local computer
 2. open in your editor
+
+
+
 3. install packages in client(frontend) and server(backend) folders
 4. open a database in any cluster named as your wish
 5. add .env file in sever folder and add parameters like DB_NAME = *your database name* DB_USER = *your user name* DB_PASS = *your user password*

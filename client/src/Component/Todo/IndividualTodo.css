@@ -1,0 +1,7 @@
+.task-item{
+    text-align: center;
+    padding: 0px 10px;
+    width: 100px;
+    border : 1px solid black;
+    margin:10px;
+}

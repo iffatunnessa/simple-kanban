@@ -1,0 +1,12 @@
+.col {
+    background: rgb(230, 230, 230);
+    margin : 20px;
+    width: 200px;
+}
+
+.container {
+    margin:20px;
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+}

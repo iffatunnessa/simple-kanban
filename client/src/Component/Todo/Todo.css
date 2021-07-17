@@ -1,0 +1,37 @@
+.col {
+    margin-right : 40px;
+    width: 20%;
+    height: 400px;
+    border: .5px solid black;
+    /* overflow: scroll; */
+}
+
+.container {
+    margin-left : 20%;
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    flex: 1 ;
+    margin-top: 3%;
+}
+.task-item{
+    text-align: center;
+    background: rgb(230, 230, 230);
+    padding: 5px 10px;
+    width: 80%;
+    border : 1px solid black;
+    margin: 10px;
+    font-size: 20px;
+    color: rgb(75, 74, 74);
+}
+.dragging {
+    opacity: .4;
+}
+
+.header{
+    background-color: tomato;
+    padding: 8px 40px;
+    margin-top:-.1px;
+    text-align: center;
+    color: rgb(75, 74, 74);
+}

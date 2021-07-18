@@ -1,7 +1,8 @@
-import { createElement, Fragment, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createElement, useState } from 'react';
+import { ReactDOM } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import './App.css';
+import Individual from './Component/Individual';
 import Todo from './Component/Todo/Todo';
 
 function App() {
@@ -32,19 +33,25 @@ function App() {
   const [taskList, setTaskList] = useState(data);
   const [task, setTask] = useState([]);
   const [count, setCount] = useState(0);
+  
+  const [newAdded, setNewAdded] = useState(false);
 
   const onSubmit = (task) => {
+    setNewAdded(true);
     setCount(count + 1);
     const newTask =
       { id: count, name: task.name };
     taskList.forEach(element => {
       if (element.state === 'To Do') {
-        element.items.push(newTask)
+        element.items.push(newTask);
         setTaskList(taskList);
       }
+      setTask(element.items);
     })
     console.log(taskList)
   }
+
+  
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,11 +59,10 @@ function App() {
         <button type='submit' id='add-btn'>Add</button>
       </form>
       <div>
-        <Todo item={taskList} />
+         <Todo item={taskList} />
       </div>
     </div>
   );
-
 }
 
 export default App;

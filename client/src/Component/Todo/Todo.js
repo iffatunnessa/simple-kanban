@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import Individual from '../Individual';
 import './Todo.css'
 const Todo = ({ item }) => {
     const [list, setList] = useState(item);
@@ -62,14 +63,12 @@ const Todo = ({ item }) => {
     }
 
     return (
-        <div className="container">
+        <div className="container" id='container'>
             {list.map((group, groupIndex) => (
                 <div className="col" key={group.state} onDragEnter={dragging && !group.items.length ? (e) => handleDragEnter(e, { groupIndex, itemIndex: 0 }) : null}>
                     <h2 className="header">{group.state}</h2>
                     {group.items.map((item, itemIndex) => (
-                        <div draggable onDragStart={(e) => handleDragStart(e, { groupIndex, itemIndex })} onDragEnter={dragging ? (e) => handleDragEnter(e, { groupIndex, itemIndex }) : null} key={item.id} className="task-item">
-                            {item.name}
-                        </div>
+                       <Individual item={item} groupIndex={groupIndex} itemIndex={itemIndex} handleDragEnter={handleDragEnter} handleDragStart={handleDragStart} dragging={dragging}/>
                     ))}
                 </div>
             ))}

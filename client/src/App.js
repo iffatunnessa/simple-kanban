@@ -1,8 +1,6 @@
-import { createElement, useState } from 'react';
-import { ReactDOM } from 'react-dom';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
-import Individual from './Component/Individual';
 import Todo from './Component/Todo/Todo';
 
 function App() {
@@ -33,7 +31,7 @@ function App() {
   const [taskList, setTaskList] = useState(data);
   const [task, setTask] = useState([]);
   const [count, setCount] = useState(0);
-  
+
   const [newAdded, setNewAdded] = useState(false);
 
   const onSubmit = (task) => {
@@ -47,11 +45,11 @@ function App() {
         setTaskList(taskList);
       }
       setTask(element.items);
+
+      console.log('added in tasklist:', taskList)
     })
-    console.log(taskList)
   }
 
-  
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,7 +57,7 @@ function App() {
         <button type='submit' id='add-btn'>Add</button>
       </form>
       <div>
-         <Todo item={taskList} />
+        <Todo item={taskList} />
       </div>
     </div>
   );

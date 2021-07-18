@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import Individual from '../Individual';
 import './Todo.css'
 const Todo = ({ item }) => {
     const [list, setList] = useState(item);
@@ -8,9 +7,8 @@ const Todo = ({ item }) => {
     const [taskItem, setTaskItem] = useState({});
     const dragItem = useRef();
     const dragTask = useRef()
-
     const addToDb = ({ groupIndex, ItemIndex }) => {
-        
+
         if (groupIndex === 0) setState('To Do');
         else if (groupIndex === 1) setState('In Progress');
         else setState('Done');
@@ -54,6 +52,7 @@ const Todo = ({ item }) => {
         }
     }
     const handleDragEnd = () => {
+        console.log('after Dragged:', list);
         addToDb(dragItem.current);
         dragTask.current.style.opacity = 1;
         setDragging(false);
@@ -68,7 +67,9 @@ const Todo = ({ item }) => {
                 <div className="col" key={group.state} onDragEnter={dragging && !group.items.length ? (e) => handleDragEnter(e, { groupIndex, itemIndex: 0 }) : null}>
                     <h2 className="header">{group.state}</h2>
                     {group.items.map((item, itemIndex) => (
-                       <Individual item={item} groupIndex={groupIndex} itemIndex={itemIndex} handleDragEnter={handleDragEnter} handleDragStart={handleDragStart} dragging={dragging}/>
+                        <div draggable onDragStart={(e) => handleDragStart(e, { groupIndex, itemIndex })} onDragEnter={dragging ? (e) => handleDragEnter(e, { groupIndex, itemIndex }) : null} key={item.id} className="task-item">
+                            {item.name}
+                        </div>
                     ))}
                 </div>
             ))}
